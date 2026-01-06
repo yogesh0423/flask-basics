@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grades - Jinja2 Loops</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2d3748; }
+        nav {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 5px;
+        }
+        nav a {
+            margin-right: 15px;
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover { color: #2b6cb0; }
+
+        /* Grades table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background: #edf2f7;
+            color: #2d3748;
+        }
+        tr:hover {
+            background: #f7fafc;
+        }
+
+        .grade-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .high { background: #48bb78; }
+        .medium { background: #ed8936; }
+        .low { background: #e53e3e; }
+
+        .loop-info {
+            background: #faf5ff;
+            border-left: 4px solid #9f7aea;
+            padding: 15px;
+            margin: 25px 0;
+        }
+
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/profile">Profile</a>
+        <a href="/skills">Skills</a>
+        <a href="/projects">Projects</a>
+        <a href="/grades">Grades</a>
+    </nav>
+
+    <h1>My Grades</h1>
+    <p>This page demonstrates <strong>Jinja2 for loops</strong> with a dictionary.</p>
+
+    <!-- Grades Table -->
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Subject</th>
+            <th>Grade</th>
+        </tr>
+
+        {% for subject, grade in grades.items() %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ subject }}</td>
+            <td>
+                {% if grade >= 85 %}
+                    <span class="grade-badge high">{{ grade }}</span>
+                {% elif grade >= 70 %}
+                    <span class="grade-badge medium">{{ grade }}</span>
+                {% else %}
+                    <span class="grade-badge low">{{ grade }}</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="loop-info">
+        <strong>The for loop in action!</strong>
+        <p>Grades are generated dynamically using a dictionary:</p>
+        <code>
+            grades = {<br>
+            &nbsp;&nbsp;"DBMS": 90,<br>
+            &nbsp;&nbsp;"AI": 85,<br>
+            &nbsp;&nbsp;"CN": 88,<br>
+            &nbsp;&nbsp;"WT": 95,<br>
+            &nbsp;&nbsp;"HCI": 78<br>
+            }
+        </code>
+    </div>
+
+    <h2>How the Loop Works</h2>
+    <div class="code-example">
+&#123;% for subject, grade in grades.items() %&#125;<br>
+&nbsp;&nbsp;&lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{ subject }}&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{ grade }}&lt;/td&gt;<br>
+&nbsp;&nbsp;&lt;/tr&gt;<br>
+&#123;% endfor %&#125;
+    </div>
+
+    <p style="margin-top: 20px;">
+        <strong>Total Subjects:</strong> {{ grades|length }}
+    </p>
+
+</div>
+</body>
+</html>

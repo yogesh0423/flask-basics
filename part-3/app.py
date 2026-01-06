@@ -12,25 +12,31 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/')                        
 def home():
-    student_name = "Alex"
+    student_name = "Yogesh Patil"
     return render_template('index.html', name=student_name)  # Pass variable to template as {{ name }}
 
 
 @app.route('/profile')
 def profile():
     user_data = {
-        'name': 'Sarah',
-        'age': 22,
-        'course': 'Web Development',
-        'is_enrolled': True
+        'name': 'Yogesh',
+        'age': 20,
+        'course': 'Deep Learning',
+        'is_enrolled': True,
+        'email': 'yogeshpatil@gmail.com',
+        'city': 'Nashik'
+
     }
     return render_template('profile.html',  # Pass multiple variables to template
                            name=user_data['name'],
                            age=user_data['age'],
                            course=user_data['course'],
-                           is_enrolled=user_data['is_enrolled'])
+                           is_enrolled=user_data['is_enrolled'],
+                            email=user_data['email'],
+                            city=user_data['city']
+                           )
 
 
 @app.route('/skills')
@@ -47,6 +53,17 @@ def projects():
         {'name': 'Weather App', 'status': 'Planned', 'tech': 'JavaScript'},
     ]
     return render_template('projects.html', projects=project_list)
+
+@app.route("/grades")
+def grades():
+    grades_data = {
+        "DBMS": 90,
+        "AI": 85,
+        "CN": 88,
+        "WT": 95,
+        "HCI": 78
+    }
+    return render_template("grades.html", grades=grades_data)
 
 
 if __name__ == '__main__':
@@ -89,3 +106,4 @@ if __name__ == '__main__':
 #   - Display them in a table using a for loop
 #
 # =============================================================================
+ 

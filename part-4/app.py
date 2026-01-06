@@ -55,6 +55,16 @@ def show_links():
     }
     return render_template('links.html', links=links)
 
+@app.route('/product/<int:product_id>')
+def product_page(product_id):
+    products = {
+        1: {'name': 'Laptop', 'price': 49999.99},
+        2: {'name': 'Smartphone', 'price': 18499.99},
+        3: {'name': 'Tablet', 'price': 35299.99},
+    }
+    product = products.get(product_id)
+    return render_template('product.html', product=product, product_id=product_id)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
