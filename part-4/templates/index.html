@@ -83,6 +83,7 @@
             <a href="/">Home</a>
             <a href="/about/">About</a>
             <a href="/links">URL Builder</a>
+            <a href="/product">product</a>
         </nav>
 
         <h1>Dynamic Routes in Flask</h1>
@@ -119,9 +120,24 @@
             <a href="/post/99">Post 99 (Not Found)</a>
         </div>
 
+        <div class="route-demo">
+            <h3>3. Product Route (Integer Parameter)</h3>
+            <p>Route: <code>/product/&lt;int:product_id&gt;</code></p>
+            <div class="code-block">
+                @app.route('/product/&lt;int:product_id&gt;')<br>
+                def show_product(product_id):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return render_template('product.html', product_id=product_id)
+            </div>
+            <p><strong>Try it:</strong></p>
+            <a href="/product/1">Product 1</a>
+            <a href="/product/2">Product 2</a>
+            <a href="/product/3">Product 3</a>
+            <a href="/product/99">Product 99 (Not Found)</a>
+        </div>
+
         <!-- Multiple Parameters Demo -->
         <div class="route-demo">
-            <h3>3. Multiple Parameters</h3>
+            <h3>4. Multiple Parameters</h3>
             <p>Route: <code>/user/&lt;username&gt;/post/&lt;int:post_id&gt;</code></p>
             <p><strong>Try it:</strong></p>
             <a href="/user/Alice/post/1">Alice's Post 1</a>

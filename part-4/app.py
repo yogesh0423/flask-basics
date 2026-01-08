@@ -65,6 +65,19 @@ def product_page(product_id):
     product = products.get(product_id)
     return render_template('product.html', product=product, product_id=product_id)
 
+@app.route('/category/<category_name>/product/<int:product_id>')
+def category_product(category_name, product_id):
+    products = {
+        1: {'name': 'Laptop', 'price': 49999.99},
+        2: {'name': 'Smartphone', 'price': 18499.99},
+        3: {'name': 'Tablet', 'price': 35299.99},
+    }
+    product = products.get(product_id)
+    return render_template('category_product.html', category_name=category_name, product=product, product_id=product_id)
+
+@app.route('/search/<query>')
+def search(query):
+    return render_template('search.html', query=query)  
 
 if __name__ == '__main__':
     app.run(debug=True)

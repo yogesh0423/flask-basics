@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if blog %}
+        {{ blog.title }} | {{ info.name }}
+    {% else %}
+        Blog Not Found | {{ info.name }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+{% if blog %}
+    <!-- Blog Found -->
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 15px;">
+            <div>
+                <h2 style="border: none; padding: 0;">{{ blog.title }}</h2>
+
+                {% if blog.status == 'Published' %}
+                    <span class="status status-completed">{{ blog.status }}</span>
+                {% elif blog.status == 'Draft' %}
+                    <span class="status status-planned">{{ blog.status }}</span>
+                {% else %}
+                    <span class="status status-in-progress">{{ blog.status }}</span>
+                {% endif %}
+            </div>
+
+            <a href="{{ url_for('blogs') }}" class="btn btn-secondary">Back to Blogs</a>
+        </div>
+    </div>
+
+    <!-- Blog Content -->
+    <div class="card">
+        <h2>Blog Content</h2>
+        <p style="font-size: 18px; margin-bottom: 20px;">
+            {{ blog.content }}
+        </p>
+
+        <h3 style="margin-top: 25px;">Tags</h3>
+        <div class="tech-tags" style="margin-top: 10px;">
+            {% for tag in blog.tags %}
+                <span class="tech-tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Blog Meta Info -->
+    <div class="info-box">
+        <strong>Dynamic Route in Action!</strong>
+        <p>This page uses the route: <code>/blog/&lt;int:blog_id&gt;</code></p>
+        <p>Current blog ID: <strong>{{ blog_id }}</strong></p>
+        <p>URL: <code>{{ url_for('blog_detail', blog_id=blog_id) }}</code></p>
+    </div>
+
+    <!-- Navigation between blogs -->
+    <div class="card">
+        <h2>Other Blogs</h2>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            {% if blog_id > 1 %}
+                <a href="{{ url_for('blog_detail', blog_id=blog_id - 1) }}" class="btn btn-secondary">
+                    Previous Blog
+                </a>
+            {% endif %}
+
+            <a href="{{ url_for('blog_detail', blog_id=blog_id + 1) }}" class="btn btn-secondary">
+                Next Blog
+            </a>
+        </div>
+    </div>
+
+{% else %}
+    <!-- Blog Not Found -->
+    <div class="card">
+        <div class="not-found">
+            <h2>Blog Not Found</h2>
+            <p>Sorry, blog #{{ blog_id }} doesn't exist.</p>
+            <p style="margin-top: 20px;">
+                <a href="{{ url_for('blogs') }}" class="btn btn-primary">View All Blogs</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="info-box warning">
+        <strong>This is Intentional!</strong>
+        <p>This demonstrates how to handle "not found" scenarios in Flask templates.</p>
+        <p>The backend sends <code>None</code> when a blog does not exist.</p>
+    </div>
+{% endif %}
+{% endblock %}
