@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Flask Templates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        nav {
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin-right: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .highlight {
+            background-color: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+
+        <h1>Hello , I'm Yogesh Patil!</h1>
+
+        <p>This page is being served from an HTML file in the <code>templates/</code> folder.</p>
+
+        <div class="highlight">
+            <strong>who am i ??</strong>
+            <p>Lets Know about me , I am a student who pursuing bachelors degree in engineering . I am a data scientist, and i have intermediate level knowledge about machine learning .</p>
+            
+        </div>
+
+        <h2>My Specialization</h2>
+        <ul>
+            <li><strong>Python Programming:</strong> Python handles logic, HTML handles presentation</li>
+            <li><strong>Data science:</strong> Edit HTML without touching Python code</li>
+            <li><strong>Web Development:</strong> Same template can be used with different data</li>
+            <li><strong>Machine Learning:</strong> We can add Python-like logic to HTML (next part!)</li>
+        </ul>
+
+        <h2>Key Takeaways</h2>
+        <ol>
+            <li>Flask makes web development easy and fun.</li>
+            <li>Templates separate logic from presentation.</li>
+            <li>Jinja2 templating engine powers Flask templates.</li>
+            <li>Reuse templates with different data.</li>
+            <li>Next: Learn Jinja2 syntax for dynamic HTML!</li>
+        </ol>
+
+    </div>
+</body>
+</html>

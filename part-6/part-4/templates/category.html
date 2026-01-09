@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Category Product</title>
+</head>
+<body>
+
+<h1>Category: {{ category }}</h1>
+
+{% if product %}
+    <p><strong>Product ID:</strong> {{ product_id }}</p>
+    <p><strong>Name:</strong> {{ product.name }}</p>
+    <p><strong>Price:</strong> ₹{{ product.price }}</p>
+{% else %}
+    <p style="color:red;">Product Not Found</p>
+{% endif %}
+
+<a href="/products">Back to Products</a>
+
+</body>
+</html>
