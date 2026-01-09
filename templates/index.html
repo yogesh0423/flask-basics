@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- ================= Dashboard ================= -->
+{% set ns = namespace(completed=0, pending=0) %}
+{% for task in tasks %}
+    {% if task.status == 'Completed' %}
+        {% set ns.completed = ns.completed + 1 %}
+    {% else %}
+        {% set ns.pending = ns.pending + 1 %}
+    {% endif %}
+{% endfor %}
+
+<div class="card">
+    <div class="stats">
+        <div class="stat-box total">
+            Total Tasks<br>
+            <strong>{{ tasks | length }}</strong>
+        </div>
+        <div class="stat-box completed">
+            Completed<br>
+            <strong>{{ ns.completed }}</strong>
+        </div>
+        <div class="stat-box pending">
+            Pending<br>
+            <strong>{{ ns.pending }}</strong>
+        </div>
+    </div>
+</div>
+
+<!-- ================= Task List ================= -->
+<div class="card">
+    <h2>All Tasks</h2>
+
+    {% if tasks %}
+        {% for task in tasks %}
+            <div class="task-item">
+                <strong>{{ task.title }}</strong>
+
+                {% if task.status == 'Completed' %}
+                    <span class="badge completed">Completed</span>
+                {% else %}
+                    <span>{{ task.status }}</span>
+                {% endif %}
+
+                <!-- Priority badge -->
+                <span class="badge {{ task.priority | lower }}">
+                    {{ task.priority }}
+                </span>
+
+                <a href="/task/{{ task.id }}">View</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="empty">No tasks available</p>
+    {% endif %}
+</div>
+
+{% endblock %}

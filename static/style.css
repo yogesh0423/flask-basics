@@ -1,0 +1,107 @@
+/* General */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 30px;
+}
+
+/* Navbar */
+nav {
+    background-color: #1e293b;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Cards */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+/* Dashboard */
+.stats {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-box {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.total { background: #6366f1; }
+.completed { background: #22c55e; }
+.pending { background: #f97316; }
+
+/* Task List */
+.task-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.task-item a {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+/* Priority Badges */
+.badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: white;
+    margin-left: 8px;
+}
+
+.high { background: #ef4444; }
+.medium { background: #f59e0b; }
+.low { background: #10b981; }
+
+/* Forms */
+form input, form select {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+/* Empty state */
+.empty {
+    color: #6b7280;
+    font-style: italic;
+}
